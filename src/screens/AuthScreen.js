@@ -4,10 +4,8 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native'
-const FBSDK = require('react-native-fbsdk');
-const {
-  LoginManager,
-} = FBSDK;
+import { LoginManager } from 'react-native-fbsdk'
+
  
 class AuthScreen extends Component {
   constructor(props) {

@@ -19,7 +19,7 @@ class Slides extends Component{
       return (
         <TouchableOpacity
           style={styles.buttonStyle}
-          onPress={()=> this.props.navigate('AuthScreen')}
+          onPress={() => this.props.navigate('AuthScreen')}
         >
           <Text style={{color: '#fff',fontSize: 16}}>GO Now</Text>
         </TouchableOpacity>
