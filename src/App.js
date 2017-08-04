@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text
-} from 'react-native';
-import AppRouter from './Routes';
+import { Provider } from 'react-redux'
+import store from '../store/store';
+import AppNavigator from './AppNavigator';
 
 export default class App extends Component{
   constructor(props) {
@@ -11,7 +9,9 @@ export default class App extends Component{
   }
   render() {
     return (
-      <AppRouter />
+      <Provider store={store}>
+        <AppNavigator />
+      </Provider>
     );
   }
 }

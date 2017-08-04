@@ -4,31 +4,35 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native'
-import { LoginManager } from 'react-native-fbsdk'
-
+import { LoginManager } from 'react-native-fbsdk';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { facebooklogin } from '../../actions';
  
 class AuthScreen extends Component {
   constructor(props) {
     super(props);
   }
 
-  handleLogin() {
-    LoginManager.logInWithReadPermissions(['public_profile'])
-      .then((result)=> {
-        if (result.isCancelled) {
-          alert('Login cancelled');
-        } else {
-          alert('Login success with permissions: '
-            + result.grantedPermissions.toString());
-        }
-      }
-    );
+  componentDidMount() {
+    this.props.facebookLogin();
+    this.onAuthComplete(this.props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.onAuthComplete(nextProps);
+  }
+
+  onAuthComplete(props) {
+    if (props.auth.token) {
+      this.props.navigation.navigate('MapScreen')
+    }
   }
 
   render() {
     return (
       <View style={{flex: 1,justifyContent: 'center',alignItems: 'center'}}>
-        <TouchableOpacity onPress={()=> this.handleLogin()}>
+        <TouchableOpacity>
           <Text>Login With facebook</Text>
         </TouchableOpacity>
       </View>
@@ -36,4 +40,16 @@ class AuthScreen extends Component {
   }
 }
 
-export default AuthScreen;
+mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  }
+}
+
+mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    facebookLogin: () => facebooklogin()
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen);
