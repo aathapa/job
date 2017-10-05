@@ -1,6 +1,6 @@
 import { FACEBOOK_LOGIN_SUCCESS } from '../constant';
 
-export default authReducers = (state = {},action) => {
+export default (state = {},action) => {
   switch (action.type) {
     case FACEBOOK_LOGIN_SUCCESS:
       return {
