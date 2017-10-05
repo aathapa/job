@@ -1,7 +1,2 @@
-import { facebooklogin } from './auth.actions';
-import { fetchJobs } from './jobs.actions';
-
-export {
-  facebooklogin,
-  fetchJobs
-}
+export * from './auth.actions';
+export * from './jobs.actions';
