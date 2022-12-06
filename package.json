@@ -10,7 +10,7 @@
 		"axios": "^0.18.1",
 		"latlng-to-zip": "0.0.1",
 		"lodash": "^4.17.4",
-		"qs": "^6.5.0",
+		"qs": "^6.5.3",
 		"react": "16.0.0-alpha.6",
 		"react-native": "0.44.2",
 		"react-native-elements": "^0.16.0",
